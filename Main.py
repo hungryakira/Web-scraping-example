@@ -17,6 +17,8 @@ soup = BeautifulSoup (website_html,"html.parser")
 
 list_price = []
 
+
+##Cleaning price data
 search_prices = soup.find_all(class_="PropertyCardWrapper__StyledPriceLine")
 for item in search_prices:
     #'$2,895+/mo' -> '$2,974'
@@ -61,6 +63,6 @@ def submit(address,price,link):
     submit_another = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/div/div[4]/a")
     submit_another.click()
 
-#### main loop
+## loop to enter data into google sheet
 for x in range(len(list_price)):
     submit(list_address[x], list_price[x],list_links[x])
