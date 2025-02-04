@@ -4,7 +4,7 @@ form_link = "https://forms.gle/Uhvuq3d3Pp6T7jKE6"
 site_link = "https://appbrewery.github.io/Zillow-Clone/"
 
 
-#####scraping property site
+##----scraping property site----##
 from bs4 import BeautifulSoup
 import requests
 
@@ -38,7 +38,7 @@ for item in search_links:
     address = item.text.replace("|",",").strip()
     list_address.append(address)
 
-#### bot to fill data
+##---- bot to fill data ----##
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
@@ -49,6 +49,7 @@ driver = webdriver.Chrome(options =chrome_options)
 
 driver.get(form_link)
 
+## Function to submit into google forms
 def submit(address,price,link):
     input_address = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input')
     input_address.send_keys(address)
